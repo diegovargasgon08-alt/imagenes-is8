@@ -1,1 +1,291 @@
-imagenes is8/index.html
+@@ -0,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Studios - Inestable Sector 8</title>
+    <!-- Importación de fuentes: Permanent Marker (dibujado a mano) y Handlee -->
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Handlee&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            color: orange;
+        }
+
+        /* Pantalla de Inicio */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .titulo-principal {
+            font-family: 'Permanent Marker', cursive;
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin-bottom: 10px;
+        }
+
+        .subtitulo-inicio {
+            font-family: 'Handlee', cursive;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 40px;
+        }
+
+        .btn-entrar {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background-color: transparent;
+            color: orange;
+            border: 2px solid orange;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .btn-entrar:hover {
+            background-color: orange;
+            color: black;
+        }
+
+        /* Navegación */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            z-index: 1000;
+            border-bottom: 1px solid orange;
+        }
+
+        nav a {
+            color: orange;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Secciones de Contenido */
+        .section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: none; /* Se ocultan por defecto */
+        }
+
+        .active-section {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Estilos Específicos de Apartados */
+        .anuncios-sub {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 20px;
+            color: orange;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .img-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .img-container img {
+            width: 90%;
+            max-width: 500px;
+            height: auto;
+            border: 2px solid orange;
+            border-radius: 10px;
+        }
+
+        .img-desc {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .mensaje-trabajando {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-top: 50px;
+            color: #ccc;
+        }
+
+        /* Colaboradores Estilo Lista */
+        .colaborador-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .colaborador-item img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid orange;
+            margin-bottom: 20px;
+        }
+
+        .colaborador-nombre {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: orange;
+        }
+
+        .colaborador-desc {
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Responsividad Móvil */
+        @media (max-width: 600px) {
+            nav { gap: 10px; font-size: 0.9rem; }
+            .colaborador-item img { width: 180px; height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de Inicio -->
+    <section id="hero">
+        <h1 class="titulo-principal">Delta studios</h1>
+        <h2 class="subtitulo-inicio">inestable sector 8</h2>
+        <button class="btn-entrar" onclick="mostrarSeccion('anuncios')">Entrar</button>
+    </section>
+
+    <!-- Barra de Navegación (Aparece tras entrar) -->
+    <nav id="main-nav" style="display: none;">
+        <a onclick="mostrarSeccion('anuncios')">Anuncios</a>
+        <a onclick="mostrarSeccion('animacion')">Animación</a>
+        <a onclick="mostrarSeccion('doblaje')">Doblaje</a>
+        <a onclick="mostrarSeccion('colaboradores')">Colaboradores/Artistas</a>
+    </nav>
+
+    <!-- Apartado: Anuncios -->
+    <section id="anuncios" class="section">
+        <p class="anuncios-sub">
+            bienvenido a Delta studios! explora los anuncios exlusivos,teasers y todo lo que necesitas saber antes del gran estreno. preparate para sumergirte en la historia que lo cambiara todo!
+        </p>
+        <div class="img-container">
+            <img src="poster oficial.jpeg">
+            width="250">
+            <p class="img-desc">inestable sector 8 en fase de produccion, capitulo 1 PROXIMAMENTE!</p>
+        </div>
+    </section>
+
+    <!-- Apartado: Animación -->
+    <section id="animacion" class="section">
+        <div class="mensaje-trabajando">
+            estamos trabajando en ello...esto toma su tiempo, pero te prometemos que la espera valdra la pena...
+        </div>
+    </section>
+
+    <!-- Apartado: Doblaje -->
+    <section id="doblaje" class="section">
+        <div class="mensaje-trabajando">
+            estamos tranajando en ello... muy pronto podras escuchar a las voces oficiales que daran alma a cada personaje.
+        </div>
+    </section>
+
+    <!-- Apartado: Colaboradores/Artistas -->
+    <section id="colaboradores" class="section">
+        
+        <div class="colaborador-item">
+            <img src="IMAGENES%20IS8/imagen%20reika.jpeg" alt="REIKA">
+            <p class="colaborador-nombre">REIKA</p>
+            <p class="colaborador-desc">escritor que los hará llorar.</p>
+        </div>
+
+        <div class="colaborador-item">
+            <img src="IMAGENES%20IS8/imagen%20jaruno.jpeg" alt="JARUNO ARCOS LUNA">
+            <p class="colaborador-nombre">JARUNO ARCOS LUNA</p>
+            <p class="colaborador-desc">me dedico principalmente a diseño de personajes.</p>
+        </div>
+
+        <div class="colaborador-item">
+            <img src="IMAGENES%20IS8/imagen%20mushy.jpeg" alt="XMUSHY">
+            <p class="colaborador-nombre">XMUSHY</p>
+            <p class="colaborador-desc">animadora!</p>
+        </div>
+
+        <div class="colaborador-item">
+            <img src="IMAGENES%20IS8/imagen%20bruno.jpeg" alt="BRUNO%20(BRUNNOX)">
+            <p class="colaborador-nombre">BRUNO (BRUNNOX)</p>
+            <p class="colaborador-desc">animador.</p>
+        </div>
+
+        <div class="colaborador-item">
+            <img src="IMAGENES%20IS8/imagen%20waffles.jpeg" alt="MR.WAFFLES">
+            <p class="colaborador-nombre">MR.WAFFLES</p>
+            <p class="colaborador-desc">i like panqueques.</p>
+        </div>
+
+    </section>
+
+    <script>
+        function mostrarSeccion(idSeccion) {
+            // Ocultar pantalla de inicio
+            document.getElementById('hero').style.display = 'none';
+            
+            // Mostrar barra de navegación
+            document.getElementById('main-nav').style.display = 'flex';
+
+            // Ocultar todas las secciones
+            const secciones = document.querySelectorAll('.section');
+            secciones.forEach(s => s.classList.remove('active-section'));
+
+            // Mostrar la sección seleccionada
+            const seleccionada = document.getElementById(idSeccion);
+            seleccionada.classList.add('active-section');
+
+            // Scroll automático al inicio de la sección
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
